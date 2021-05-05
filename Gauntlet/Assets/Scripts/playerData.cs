@@ -62,4 +62,8 @@ public class playerData : MonoBehaviour
     }
 
     //Player Attack function
+    private void p1Attack()
+    {
+        
+    }
 }
