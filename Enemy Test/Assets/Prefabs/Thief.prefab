@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 694873499160637744}
   - component: {fileID: 4051897612060050475}
   - component: {fileID: 2729621463905575231}
-  - component: {fileID: 4530121834412086434}
+  - component: {fileID: -909247185510311349}
   - component: {fileID: 2311866456081530159}
   m_Layer: 0
   m_Name: Thief
@@ -95,7 +95,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.1, y: 1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2729621463905575231
 Rigidbody:
@@ -113,7 +113,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &4530121834412086434
+--- !u!114 &-909247185510311349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,21 +122,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2865481910097244450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271063fdfabdb7346970ac995de56493, type: 3}
+  m_Script: {fileID: 11500000, guid: 5af7ff71513a3624895038271beba846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHp: 2
   playerPos: {fileID: 0}
-  randChance: 0
-  randItem: 0
-  ghostObj: {fileID: 0}
-  gruntObj: {fileID: 0}
-  demonObj: {fileID: 0}
-  lobberObj: {fileID: 0}
-  sorcererObj: {fileID: 0}
   moveSpeed: 4
-  maxDist: 10
-  minDist: 5
+  maxDist: 1
+  minDist: 0
   playerDetect: {fileID: 0}
 --- !u!114 &2311866456081530159
 MonoBehaviour:

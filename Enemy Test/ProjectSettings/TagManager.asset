@@ -17,6 +17,11 @@ TagManager:
   - demonSpawner
   - thiefSpawner
   - lobberSpawner
+  - projectileSpawn
+  - projectile
+  - floor
+  - demonProjectile
+  - death
   layers:
   - Default
   - TransparentFX

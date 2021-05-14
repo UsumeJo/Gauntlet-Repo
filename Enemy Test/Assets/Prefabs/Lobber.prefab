@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2260317633462099675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3607733813778103948}
+  m_Layer: 0
+  m_Name: ProjectileSpawn
+  m_TagString: projectileSpawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3607733813778103948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2260317633462099675}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.865}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5457709219946005883}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7232952258162171298
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +43,7 @@ GameObject:
   - component: {fileID: 7871532076599965238}
   - component: {fileID: 8977515311465571874}
   - component: {fileID: 7374229120746928234}
-  - component: {fileID: 7709182702891308953}
+  - component: {fileID: 8326389033346262208}
   - component: {fileID: -4131648451975597799}
   m_Layer: 0
   m_Name: Lobber
@@ -34,6 +64,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children:
   - {fileID: 7322140323582633628}
+  - {fileID: 3607733813778103948}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -113,7 +144,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &7709182702891308953
+--- !u!114 &8326389033346262208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,22 +153,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 7232952258162171298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271063fdfabdb7346970ac995de56493, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b4b27355778ad340955c4c119639179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHp: 2
   playerPos: {fileID: 0}
-  randChance: 0
-  randItem: 0
-  ghostObj: {fileID: 0}
-  gruntObj: {fileID: 0}
-  demonObj: {fileID: 0}
-  lobberObj: {fileID: 0}
-  sorcererObj: {fileID: 0}
   moveSpeed: 4
   maxDist: 10
   minDist: 5
+  bulletSpeedForward: 200
+  bulletSpeedUp: 300
+  bulletDespawn: 5
+  bulletSpawn: 5
   playerDetect: {fileID: 0}
+  projectileObj: {fileID: 8688157258429972587, guid: 943e2ed246d26b744bd686054eb92974,
+    type: 3}
+  projectileSpawn: {fileID: 2260317633462099675}
 --- !u!114 &-4131648451975597799
 MonoBehaviour:
   m_ObjectHideFlags: 0

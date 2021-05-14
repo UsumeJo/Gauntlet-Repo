@@ -9,14 +9,15 @@ public class EnemyParent : MonoBehaviour
     public GameObject playerPos;
     public int randChance;
     public int randItem;
-    
+    public GameObject enemyType;
+
     //Spawners
     public GameObject ghostObj;
     public GameObject gruntObj;
     public GameObject demonObj;
     public GameObject lobberObj;
     public GameObject sorcererObj;
-    
+
     //Enemy movement
     public int moveSpeed = 4;
     public int maxDist = 10;
@@ -24,7 +25,7 @@ public class EnemyParent : MonoBehaviour
 
     private void Start()
     {
-   
+        
     }
 
     public void Movement()
@@ -34,7 +35,6 @@ public class EnemyParent : MonoBehaviour
         //moves enemy towards player
         if (Vector3.Distance(transform.position, playerPos.transform.position) >= minDist)
         {
-            Debug.Log("Working");
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
         }
 
@@ -42,7 +42,13 @@ public class EnemyParent : MonoBehaviour
         if (Vector3.Distance(transform.position, playerPos.transform.position) <= maxDist)
         {
             //Here Call any function U want Like Shoot at here or something
-            Debug.Log("attack player");
+            EnemyAttack(enemyType);
         }
+        
+    }
+
+    public void EnemyAttack(GameObject enemy)
+    {
+        
     }
 }

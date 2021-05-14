@@ -18,7 +18,22 @@ public class EnemyAi : EnemyParent
         if (playerDetect.trackPlayer == true)
         {
             //calls movement from enemy parent 
+            enemyType = this.gameObject;
             Movement();
+        }
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if(gameObject.tag == "grunt" && col.gameObject.tag == "Player")
+        {
+            //Insert damage player
+        }
+
+        if (gameObject.tag == "ghost" && col.gameObject.tag == "Player")
+        {
+            gameObject.SetActive(false);
+            //Insert damage player
         }
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3592401585176397882}
   - component: {fileID: 8870024418318263640}
   - component: {fileID: 7920197182297872448}
-  - component: {fileID: 8002126140166563727}
+  - component: {fileID: 6606558597910181840}
   - component: {fileID: 7791882760608250314}
   - component: {fileID: 7537258806539741424}
   m_Layer: 0
@@ -34,6 +34,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 6668656298970383016}
+  - {fileID: 4632306774277548934}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,7 +98,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8002126140166563727
+--- !u!114 &6606558597910181840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,22 +107,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 3997480742916925692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271063fdfabdb7346970ac995de56493, type: 3}
+  m_Script: {fileID: 11500000, guid: b52459ca479454441b4c3e6d0f50f4f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHp: 2
   playerPos: {fileID: 0}
-  randChance: 0
-  randItem: 0
-  ghostObj: {fileID: 0}
-  gruntObj: {fileID: 0}
-  demonObj: {fileID: 0}
-  lobberObj: {fileID: 0}
-  sorcererObj: {fileID: 0}
   moveSpeed: 4
   maxDist: 10
   minDist: 5
+  bulletSpeedForward: 200
+  bulletDespawn: 0
+  bulletSpawn: 0
   playerDetect: {fileID: 0}
+  projectileObj: {fileID: 3662171750180622987, guid: 2854d90e94380a44b8c9d972d4d6b3cb,
+    type: 3}
+  projectileSpawn: {fileID: 7132253596930066801}
 --- !u!114 &7791882760608250314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +150,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!1 &7132253596930066801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4632306774277548934}
+  m_Layer: 0
+  m_Name: DemonProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4632306774277548934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132253596930066801}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.876}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5809549999774043392}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7956751487533886654
 PrefabInstance:
   m_ObjectHideFlags: 0

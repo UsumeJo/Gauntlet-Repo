@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4918036804588641148}
   - component: {fileID: 41304487266226814}
   - component: {fileID: 2028425508674667715}
-  - component: {fileID: 6472684839362651753}
+  - component: {fileID: -2901748810913420513}
   - component: {fileID: 1916778137971008065}
   - component: {fileID: 922177129511489454}
   m_Layer: 0
@@ -98,7 +98,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6472684839362651753
+--- !u!114 &-2901748810913420513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,22 +107,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 477555436852636445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271063fdfabdb7346970ac995de56493, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c663ae7465b56445929f6a416ce23f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHp: 2
-  playerPos: {fileID: 4365297433664345129, guid: a1d16253a1173434b8652374b414e432,
-    type: 3}
-  randChance: 0
-  randItem: 0
-  ghostObj: {fileID: 0}
-  gruntObj: {fileID: 0}
-  demonObj: {fileID: 0}
-  lobberObj: {fileID: 0}
-  sorcererObj: {fileID: 0}
+  playerPos: {fileID: 0}
   moveSpeed: 4
-  maxDist: 10
-  minDist: 2
+  maxDist: 1
+  minDist: 0
   playerDetect: {fileID: 0}
 --- !u!114 &1916778137971008065
 MonoBehaviour:
