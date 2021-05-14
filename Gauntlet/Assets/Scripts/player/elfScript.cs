@@ -16,6 +16,7 @@ public class elfScript : playerData
         //Functions to set
         elfStats();
         setControls();
+        arrowPrefab = gameManager.GetComponent<GameManager>().arrowPrefab;
     }
 
     private void FixedUpdate()
@@ -141,6 +142,10 @@ public class elfScript : playerData
             }
 
             itPot = 5;
+        }
+        if (other.tag == "death")
+        {
+            hp--;
         }
     }
 }

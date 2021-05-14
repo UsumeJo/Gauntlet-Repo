@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class warriorScript : playerData
 {
-    
+
     //Weapon objects for players to use
     public GameObject axePrefab;
     public GameObject axe;
@@ -18,6 +18,7 @@ public class warriorScript : playerData
         //Functions to set
         warStats();
         setControls();
+        axePrefab = gameManager.GetComponent<GameManager>().arrowPrefab;
     }
 
     private void FixedUpdate()
@@ -100,6 +101,8 @@ public class warriorScript : playerData
 
             //Return values to arrow
             axe.transform.position = destination;
+            axe.GetComponent<pProjectileBehavior>().pLS = pLS;
+            axe.GetComponent<pProjectileBehavior>().pLD = pLD;
 
             lRA = false;
         }
@@ -143,6 +146,10 @@ public class warriorScript : playerData
             }
 
             itPot = 5;
+        }
+        if (other.tag == "death")
+        {
+            hp--;
         }
     }
 }

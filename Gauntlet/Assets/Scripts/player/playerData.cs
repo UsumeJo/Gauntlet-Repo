@@ -80,6 +80,8 @@ public class playerData : MonoBehaviour
         itPot = 0;
         lootB = 0;
         heart = 0;
+
+        gameManager = GameObject.Find("Game Manager");
     }
 
     //Player Movement function
@@ -275,7 +277,7 @@ public class playerData : MonoBehaviour
 
     public void nukeCheck()
     {
-        if(sRA == true)
+        if (sRA == true)
         {
             gameManager.GetComponent<GameManager>().nuke = true;
         }

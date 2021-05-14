@@ -45,7 +45,7 @@ public class pProjectileBehavior : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
+
         arrowMovement();
     }
 
@@ -55,19 +55,19 @@ public class pProjectileBehavior : MonoBehaviour
 
         if (up == true)
         {
-            destination.z += 0.05f * pLS;
+            destination.z += 0.03f * pLS;
         }
         else if (left == true)
         {
-            destination.x -= 0.05f * pLS;
+            destination.x -= 0.03f * pLS;
         }
         else if (right == true)
         {
-            destination.x += 0.05f * pLS;
+            destination.x += 0.03f * pLS;
         }
         else if (down == true)
         {
-            destination.z -= 0.05f * pLS;
+            destination.z -= 0.03f * pLS;
         }
 
         this.transform.position = destination;
@@ -83,7 +83,7 @@ public class pProjectileBehavior : MonoBehaviour
         if (other.tag == "Wall" || other.tag == "sorcerer" || other.tag == "ghost" || other.tag == "spawner")
         {
             Destroy(this.gameObject);
-            
+
         }
     }
 
@@ -105,6 +105,6 @@ public class pProjectileBehavior : MonoBehaviour
         {
             playerParent.GetComponent<elfScript>().lRS = false;
         }
-        
+
     }
 }

@@ -17,6 +17,8 @@ public class wizardScript : playerData
         //Functions to set
         wizStats();
         setControls();
+
+        fireBallPrefab = gameManager.GetComponent<GameManager>().arrowPrefab;
     }
 
     private void FixedUpdate()
@@ -47,7 +49,7 @@ public class wizardScript : playerData
         if (lRA == true)
         {
             //When long range attack occurs instantiate fireBall
-            fireBallPrefab = Instantiate(fireBallPrefab) as GameObject;
+            fireBall = Instantiate(fireBallPrefab) as GameObject;
 
             //Start it at player's position, dependant on which direction its being shot from
             fireBall.transform.position = this.transform.position;
@@ -97,6 +99,8 @@ public class wizardScript : playerData
 
             //Return values to fireBall
             fireBall.transform.position = destination;
+            fireBall.GetComponent<pProjectileBehavior>().pLS = pLS;
+            fireBall.GetComponent<pProjectileBehavior>().pLD = pLD;
 
             lRA = false;
         }
@@ -140,6 +144,10 @@ public class wizardScript : playerData
             }
 
             itPot = 5;
+        }
+        if (other.tag == "death")
+        {
+            hp--;
         }
     }
 }

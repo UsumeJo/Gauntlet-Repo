@@ -17,6 +17,8 @@ public class valkScript : playerData
         //Functions to set
         valkStats();
         setControls();
+
+        swordPrefab = gameManager.GetComponent<GameManager>().arrowPrefab;
     }
 
     private void FixedUpdate()
@@ -99,6 +101,8 @@ public class valkScript : playerData
 
             //Return values to arrow
             sword.transform.position = destination;
+            sword.GetComponent<pProjectileBehavior>().pLS = pLS;
+            sword.GetComponent<pProjectileBehavior>().pLD = pLD;
 
             lRA = false;
         }
@@ -140,8 +144,12 @@ public class valkScript : playerData
             {
                 key--;
             }
-
             itPot = 5;
+        }
+
+        if (other.tag == "death")
+        {
+            hp--;
         }
     }
 }
