@@ -12,6 +12,8 @@ public class wizardScript : playerData
     {
         pSE = false;
 
+        cChoice = 3;
+
         //Functions to set
         wizStats();
         setControls();
@@ -19,9 +21,12 @@ public class wizardScript : playerData
 
     private void FixedUpdate()
     {
+        itPot--;
         pMovement();
         pAttackCheck();
         attackWiz();
+        hpDrain();
+        nukeCheck();
     }
 
     //A function to set stats to Wizard stats
@@ -96,5 +101,45 @@ public class wizardScript : playerData
             lRA = false;
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (itPot <= 0)
+        {
+            if (other.tag == "nuPotion")
+            {
+                potions++;
+            }
+            if (other.tag == "lootB")
+            {
+                score += 50;
+                lootB++;
+            }
+            if (other.tag == "treasure")
+            {
+                score += 100;
+            }
+            if (other.tag == "key")
+            {
+                key++;
+                score += 100;
+            }
+            if (other.tag == "food")
+            {
+                hp += 100;
+            }
+            if (other.tag == "heart")
+            {
+                hp += 50;
+                heart++;
+            }
+            if (other.tag == "lock")
+            {
+                key--;
+            }
+
+            itPot = 5;
+        }
     }
 }

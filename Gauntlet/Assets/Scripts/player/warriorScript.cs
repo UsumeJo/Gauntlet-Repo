@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class warriorScript : playerData
 {
+    
     //Weapon objects for players to use
     public GameObject axePrefab;
     public GameObject axe;
@@ -12,6 +13,7 @@ public class warriorScript : playerData
     void Awake()
     {
         pSE = true;
+        cChoice = 1;
 
         //Functions to set
         warStats();
@@ -20,8 +22,12 @@ public class warriorScript : playerData
 
     private void FixedUpdate()
     {
+        itPot--;
         pMovement();
         pAttackCheck();
+        attackElf();
+        hpDrain();
+        nukeCheck();
     }
 
     //A function to set stats to Warrior stats
@@ -55,20 +61,41 @@ public class warriorScript : playerData
             if (up == true)
             {
                 destination.z += 1;
+
+                axe.GetComponent<pProjectileBehavior>().up = true;
+                axe.GetComponent<pProjectileBehavior>().left = false;
+                axe.GetComponent<pProjectileBehavior>().right = false;
+                axe.GetComponent<pProjectileBehavior>().down = false;
             }
             else if (left == true)
             {
                 destination.x -= 1.1f;
                 axe.GetComponent<Transform>().eulerAngles = new Vector3(90, 0, 90);
+
+                axe.GetComponent<pProjectileBehavior>().up = false;
+                axe.GetComponent<pProjectileBehavior>().left = true;
+                axe.GetComponent<pProjectileBehavior>().right = false;
+                axe.GetComponent<pProjectileBehavior>().down = false;
             }
             else if (right == true)
             {
                 destination.x += 1.1f;
                 axe.GetComponent<Transform>().eulerAngles = new Vector3(90, 0, 90);
+
+                axe.GetComponent<pProjectileBehavior>().up = false;
+                axe.GetComponent<pProjectileBehavior>().left = false;
+                axe.GetComponent<pProjectileBehavior>().right = true;
+                axe.GetComponent<pProjectileBehavior>().down = false;
+
             }
             else
             {
                 destination.z -= 1;
+
+                axe.GetComponent<pProjectileBehavior>().up = false;
+                axe.GetComponent<pProjectileBehavior>().left = false;
+                axe.GetComponent<pProjectileBehavior>().right = false;
+                axe.GetComponent<pProjectileBehavior>().down = true;
             }
 
             //Return values to arrow
@@ -77,5 +104,45 @@ public class warriorScript : playerData
             lRA = false;
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (itPot <= 0)
+        {
+            if (other.tag == "nuPotion")
+            {
+                potions++;
+            }
+            if (other.tag == "lootB")
+            {
+                score += 50;
+                lootB++;
+            }
+            if (other.tag == "treasure")
+            {
+                score += 100;
+            }
+            if (other.tag == "key")
+            {
+                key++;
+                score += 100;
+            }
+            if (other.tag == "food")
+            {
+                hp += 100;
+            }
+            if (other.tag == "heart")
+            {
+                hp += 50;
+                heart++;
+            }
+            if (other.tag == "lock")
+            {
+                key--;
+            }
+
+            itPot = 5;
+        }
     }
 }

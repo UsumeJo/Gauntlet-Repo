@@ -72,7 +72,7 @@ public class pProjectileBehavior : MonoBehaviour
 
         this.transform.position = destination;
 
-        if (destination.x > spawn.x + 15 || destination.x < spawn.x - 15 || destination.z < spawn.z - 15 || destination.z > 15 + spawn.z)
+        if (destination.x > spawn.x + 25 || destination.x < spawn.x - 25 || destination.z < spawn.z - 25 || destination.z > 25 + spawn.z)
         {
             Destroy(this.gameObject);
         }

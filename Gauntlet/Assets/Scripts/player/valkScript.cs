@@ -12,6 +12,8 @@ public class valkScript : playerData
     {
         pSE = true;
 
+        cChoice = 2;
+
         //Functions to set
         valkStats();
         setControls();
@@ -19,9 +21,13 @@ public class valkScript : playerData
 
     private void FixedUpdate()
     {
+        itPot--;
         pMovement();
         pAttackCheck();
         attackValk();
+        hpDrain();
+        nukeCheck();
+
     }
 
     //A function to set valk stats
@@ -55,20 +61,40 @@ public class valkScript : playerData
             if (up == true)
             {
                 destination.z += 1;
+
+                sword.GetComponent<pProjectileBehavior>().up = true;
+                sword.GetComponent<pProjectileBehavior>().left = false;
+                sword.GetComponent<pProjectileBehavior>().right = false;
+                sword.GetComponent<pProjectileBehavior>().down = false;
             }
             else if (left == true)
             {
                 destination.x -= 1.1f;
                 sword.GetComponent<Transform>().eulerAngles = new Vector3(90, 0, 90);
+
+                sword.GetComponent<pProjectileBehavior>().up = false;
+                sword.GetComponent<pProjectileBehavior>().left = true;
+                sword.GetComponent<pProjectileBehavior>().right = false;
+                sword.GetComponent<pProjectileBehavior>().down = false;
             }
             else if (right == true)
             {
                 destination.x += 1.1f;
                 sword.GetComponent<Transform>().eulerAngles = new Vector3(90, 0, 90);
+
+                sword.GetComponent<pProjectileBehavior>().up = false;
+                sword.GetComponent<pProjectileBehavior>().left = false;
+                sword.GetComponent<pProjectileBehavior>().right = true;
+                sword.GetComponent<pProjectileBehavior>().down = false;
             }
             else
             {
                 destination.z -= 1;
+
+                sword.GetComponent<pProjectileBehavior>().up = false;
+                sword.GetComponent<pProjectileBehavior>().left = false;
+                sword.GetComponent<pProjectileBehavior>().right = false;
+                sword.GetComponent<pProjectileBehavior>().down = true;
             }
 
             //Return values to arrow
@@ -77,5 +103,45 @@ public class valkScript : playerData
             lRA = false;
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (itPot <= 0)
+        {
+            if (other.tag == "nuPotion")
+            {
+                potions++;
+            }
+            if (other.tag == "lootB")
+            {
+                score += 50;
+                lootB++;
+            }
+            if (other.tag == "treasure")
+            {
+                score += 100;
+            }
+            if (other.tag == "key")
+            {
+                key++;
+                score += 100;
+            }
+            if (other.tag == "food")
+            {
+                hp += 100;
+            }
+            if (other.tag == "heart")
+            {
+                hp += 50;
+                heart++;
+            }
+            if (other.tag == "lock")
+            {
+                key--;
+            }
+
+            itPot = 5;
+        }
     }
 }

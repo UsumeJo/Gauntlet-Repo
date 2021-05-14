@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class playerData : MonoBehaviour
 {
+    //Game manager
+    public GameObject gameManager;
+
     //Every player needs variables for their stats
     public float pMS; //Player Movement speed
     public int pHP; //Player Health Points
@@ -39,8 +42,19 @@ public class playerData : MonoBehaviour
     public bool right;
     public bool down;
 
+    //Variable for misc stats
+    public int hp;
+    public int hpcd;
+    public int score;
+    public int key;
+    public int itPot;
+
     //Variable for character choice
     public int cChoice; //Character Choice| 1 = Warrior; 2 = Valkyrie; 3 = Wizard; 4 = Elf
+
+    //Special items
+    public int lootB;
+    public int heart;
 
 
     public void setControls()
@@ -56,6 +70,16 @@ public class playerData : MonoBehaviour
         left = false;
         right = false;
         down = false;
+
+        //Variable for hp
+        hp = 700;
+        hpcd = 10;
+        score = 0;
+        key = 0;
+
+        itPot = 0;
+        lootB = 0;
+        heart = 0;
     }
 
     //Player Movement function
@@ -162,7 +186,21 @@ public class playerData : MonoBehaviour
             }
         }
 
-        this.transform.position = new Vector3(cPX, 4.4f, cPY);
+        this.transform.position = new Vector3(cPX, 0, cPY);
+    }
+
+    public void hpDrain()
+    {
+        if (hp > 0 && hpcd <= 0)
+        {
+            hp--;
+            hpcd = 100;
+        }
+
+        if (hpcd > 0)
+        {
+            hpcd--;
+        }
     }
 
     //Player Attack function
@@ -232,6 +270,14 @@ public class playerData : MonoBehaviour
                 lRS = true;
                 lRA = true;
             }
+        }
+    }
+
+    public void nukeCheck()
+    {
+        if(sRA == true)
+        {
+            gameManager.GetComponent<GameManager>().nuke = true;
         }
     }
 }

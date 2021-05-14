@@ -63,6 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\items\itemBehavior.cs" />
+    <Compile Include="Assets\Scripts\items\nukePotion.cs" />
     <Compile Include="Assets\Scripts\player\elfScript.cs" />
     <Compile Include="Assets\Scripts\player\pProjectileBehavior.cs" />
     <Compile Include="Assets\Scripts\player\playerData.cs" />
