@@ -12,6 +12,7 @@ public class warriorScript : playerData
 
     void Awake()
     {
+        hp = 700;
         pSE = true;
         cChoice = 1;
 
@@ -29,6 +30,7 @@ public class warriorScript : playerData
         attackElf();
         hpDrain();
         nukeCheck();
+        deathCheck();
     }
 
     //A function to set stats to Warrior stats

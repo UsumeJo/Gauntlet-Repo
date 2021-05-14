@@ -29,7 +29,7 @@ public class valkScript : playerData
         attackValk();
         hpDrain();
         nukeCheck();
-
+        deathCheck();
     }
 
     //A function to set valk stats

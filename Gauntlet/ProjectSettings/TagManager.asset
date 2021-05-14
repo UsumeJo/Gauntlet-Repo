@@ -16,6 +16,13 @@ TagManager:
   - player3
   - player4
   - door
+  - death
+  - ghost
+  - sorcerer
+  - demon
+  - grunt
+  - lobber
+  - thief
   layers:
   - Default
   - TransparentFX

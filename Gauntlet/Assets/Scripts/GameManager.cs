@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public GameObject player2;
     public GameObject player3;
     public GameObject player4;
+    public GameObject titlScreen;
+    public GameObject gameUI;
+    public GameObject scoreScreen;
 
     public GameObject arrowPrefab;
 
@@ -25,15 +28,25 @@ public class GameManager : MonoBehaviour
 
     //Public bool for if the player is on the title screen
     public bool title;
+    public bool afterGameScore;
 
     //Public bool for if enemies are to be nuked
     public bool nuke;
+    public bool dead1;
+    public bool dead2;
+    public bool dead3;
+    public bool dead4;
 
 
     private void Start()
     {
         title = true;
+        afterGameScore = false;
         nuke = false;
+        dead1 = false;
+        dead2 = false;
+        dead3 = false;
+        dead4 = false;
 
         choiceMade = false;
         choiceMade2 = false;
@@ -44,11 +57,16 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         //Start functions
-        titleScreen();
         choice();
+        titleScreen();
+        
 
         //Functions running during Game
         nuketime();
+        uiSwitch();
+
+        //Function to end game
+        resetGame();
     }
 
     //Code for Title
@@ -60,22 +78,70 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             player1.SetActive(true);
             player1.transform.position = new Vector3(0, 0, 0);
+            title = false;
         }
     }
 
     private void resetGame()
     {
-        //Reset all enemies in this level
-        killEnemies();
+        if (title == false && afterGameScore == false && (dead1 == true || player1.activeSelf == false) && (dead2 == true || player2.activeSelf == false) && (dead3 == true || player3.activeSelf == false) && (dead4 == true || player4.activeSelf == false))
+        {
+            //Reset all enemies in this level
+            killEnemies();
 
-        //Turn all players off
-        player1.SetActive(false);
-        player2.SetActive(false);
-        player3.SetActive(false);
-        player4.SetActive(false);
+            //Turn all players off
+            dead1 = false;
+            dead2 = false;
+            dead3 = false;
+            dead4 = false;
+            choice1 = 5;
+            choice2 = 5;
+            choice3 = 5;
+            choice4 = 5;
+            choiceMade = false;
+            choiceMade2 = false;
+            choiceMade3 = false;
+            choiceMade4 = false;
+            player1.SetActive(false);
+            player2.SetActive(false);
+            player3.SetActive(false);
+            player4.SetActive(false);
 
-        //Load Title Screen
-        SceneManager.LoadScene(0);
+            //Load Title Screen
+            SceneManager.LoadScene(2);
+            afterGameScore = true;
+        }
+
+        if (afterGameScore == true && Input.GetKey(KeyCode.Space))
+        {
+            //Change to title screen
+            SceneManager.LoadScene(0);
+            afterGameScore = false;
+            title = true;
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void uiSwitch()
+    {
+        if (title == true && afterGameScore == false)
+        {
+            titlScreen.SetActive(true);
+            //gameUI.SetActive(false);
+            //scoreScreen.SetActive(false);
+        }
+        else if (title == false && afterGameScore == false)
+        {
+            titlScreen.SetActive(false);
+            //gameUI.SetActive(true);
+            //scoreScreen.SetActive(false);
+        }
+        else if (title == false && afterGameScore == true)
+        {
+            titlScreen.SetActive(false);
+            //gameUI.SetActive(false);
+            //scoreScreen.SetActive(true);
+        }
     }
 
     private void nuketime()
@@ -138,6 +204,7 @@ public class GameManager : MonoBehaviour
                 choice1 = 1;
                 player1.AddComponent<warriorScript>();
                 player1.GetComponent<warriorScript>().cPlayer = 1;
+                player1.GetComponent<warriorScript>().hp = 700;
                 choiceMade = true;
             }
             else if (Input.GetKey(KeyCode.Alpha2))

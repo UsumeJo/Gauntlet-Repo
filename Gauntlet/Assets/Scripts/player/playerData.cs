@@ -56,6 +56,8 @@ public class playerData : MonoBehaviour
     public int lootB;
     public int heart;
 
+    private Vector3 dest;
+
 
     public void setControls()
     {
@@ -187,8 +189,33 @@ public class playerData : MonoBehaviour
                 down = false;
             }
         }
+        dest.x = cPX;
+        dest.z = cPY;
+        this.transform.position = dest;
+    }
 
-        this.transform.position = new Vector3(cPX, 0, cPY);
+    public void deathCheck()
+    {
+        if (hp <= 0)
+        {
+            if(cPlayer == 1)
+            {
+                gameManager.GetComponent<GameManager>().dead1 = true;
+            }
+            else if (cPlayer == 2)
+            {
+                gameManager.GetComponent<GameManager>().dead2 = true;
+            }
+            else if (cPlayer == 3)
+            {
+                gameManager.GetComponent<GameManager>().dead3 = true;
+            }
+            else if (cPlayer == 4)
+            {
+                gameManager.GetComponent<GameManager>().dead4 = true;
+            }
+        }
+
     }
 
     public void hpDrain()

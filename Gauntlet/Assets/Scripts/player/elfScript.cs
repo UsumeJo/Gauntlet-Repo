@@ -27,6 +27,7 @@ public class elfScript : playerData
         attackElf();
         hpDrain();
         nukeCheck();
+        deathCheck();
     }
 
     //A function to set elf stats

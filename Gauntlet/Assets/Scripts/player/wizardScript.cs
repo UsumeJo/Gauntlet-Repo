@@ -29,6 +29,7 @@ public class wizardScript : playerData
         attackWiz();
         hpDrain();
         nukeCheck();
+        deathCheck();
     }
 
     //A function to set stats to Wizard stats
